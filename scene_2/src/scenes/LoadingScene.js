@@ -33,16 +33,16 @@ import gameClearOgg from "../assets/sounds/gameClear.ogg";
 import pauseInOgg from "../assets/sounds/pauseIn.ogg";
 import pauseOutOgg from "../assets/sounds/pauseOut.ogg";
 
-// 사용할 모든 asset(image, sprite image, audio, font 등)을 load해 놓습니다.
+// 사용할 모든 asset(image, sprite image, audio, font 등)을 load해 놓는다.
 export default class LoadingScene extends Phaser.Scene {
     constructor() {
-        // super에 파라미터로 넘겨주는 string이 해당 scene의 identifier(식별자)가 됩니다.
+        // super에 파라미터로 넘겨주는 string이 해당 scene(= 여기서는 LoadingScene)의 identifier(식별자)가 된다.
         super("bootGame");
     }
 
     // asset들을 load하는 부분
     preload() {
-        // (import한 asset이름, "식별자") --> "큰따옴표"안에 있는 string이 identifier(식별자)가 된다.
+        // ("식별자", import한 asset이름) --> "큰따옴표"안에 있는 string이 해당 asset의 identifier(식별자)가 된다.
 
         // IMAGES
         this.load.image("background1", bgImg1);
@@ -126,10 +126,10 @@ export default class LoadingScene extends Phaser.Scene {
 
     // load 시간이 많이 걸리지 않아 LoadingScene이 화면에 직접적으로 보일 일은 없지만
     // 혹시 모르니 “Loading game…”이라는 문구를 적어주었다.
-    // create function 처음에 최초 1회만 실행된다.
-    // cf) update fimction은 계속해서 실행된다.
+    // create function 처음에 최초 1회만 실행된다. / update fimction은 계속해서 실행된다.
     create() {
         this.add.text(20, 20, "Loading game...");
+        
         // create가 됐을 때 PlayingScene을 start 한다.
         this.scene.start("playGame"); // playGame = PlayingScene.js의 identifier(식별자)
 

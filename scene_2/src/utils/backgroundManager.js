@@ -6,7 +6,7 @@ import Config from "../Config";
  * @param {string} backgroundTexture
  */
 export function setBackground(scene, backgroundTexture) {
-    // tileSprite : 게임 화면이 background image보다 클 시 타일처럼 다닥다닥 붙여서 보여주는 이미지
+    // tileSprite : 게임 화면이 background image보다 큰 경우 background image를 타일처럼 붙여서 보여주는 이미지
     // (CSS의 background-repeat: repeat; 같은 느낌)
     scene.m_background = scene.add.tileSprite(
         0,
