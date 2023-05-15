@@ -180,14 +180,14 @@ export default class LoadingScene extends Phaser.Scene {
         });
 
         // PLAYERS
-        this.anims.create({
+        this.anims.create({ // 이동
             key: "player_anim",
             frames: this.anims.generateFrameNumbers("player"),
             frameRate: 12,
             repeat: -1,
         });
 
-        this.anims.create({
+        this.anims.create({ // 정지
             key: "player_idle",
             frames: this.anims.generateFrameNumbers("player", {
                 start: 0, // 0번째 순서의 이미지로 시작(이미지가 자연스럽게 이어져 보이도록하기 위해)
