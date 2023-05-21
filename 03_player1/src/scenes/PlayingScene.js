@@ -30,6 +30,9 @@ export default class PlayingScene extends Phaser.Scene {
         // new Player(this) --> (Player class의 인스턴스 생성, 자기 자신(PlayingScene)을 scene으로 전달)
         this.m_player = new Player(this); // characters/Player.js
 
+        // 캐릭터가 화면 밖으로 나가지 않도록 막는다.
+        this.m_player.setCollideWorldBounds(true);
+
         // PlayingScene의 background 설정
         // 여기서 "background1"은 LoadingScene에서 load한 asset이다. --> this.load.image("background1", bgImg1);
         setBackground(this, "background1"); // backgroundManager.js의 함수
@@ -47,17 +50,14 @@ export default class PlayingScene extends Phaser.Scene {
     }
 
     movePlayerManager() {
-        if (this.m_cursorKeys.left.isDown
-            || this.m_cursorKeys.right.isDown
-            || this.m_cursorKeys.up.isDown
-            || this.m_cursorKeys.down.isDown) {
-                // 방향키가 눌리면 애니메이션 재생
-                if (!this.m_player.m_moving) { // player가 움직이면 true / 멈춰있으면 false
-                    // "player_anim"는 LoadingScene.js의 create function에 있다.
-                    // 방향키에 손을 떼서 멈추기 직전까지 계속해서 아래 코드가 실행된다.(한 번 play 되면 계속해서 play 된다.)
-                    this.m_player.play("player_anim"); // player_anim를 play 할 것이다.(재생할 것이다.)
-                }
-                this.m_player.m_moving = true;
+        if (this.m_cursorKeys.left.isDown || this.m_cursorKeys.right.isDown || this.m_cursorKeys.up.isDown || this.m_cursorKeys.down.isDown) {
+            // 방향키가 눌리면 애니메이션 재생
+            if (!this.m_player.m_moving) { // player가 움직이면 true / 멈춰있으면 false
+                // "player_anim"는 LoadingScene.js의 create function에 있다.
+                // 방향키에 손을 떼서 멈추기 직전까지 계속해서 아래 코드가 실행된다.(한 번 play 되면 계속해서 play 된다.)
+                this.m_player.play("player_anim"); // player_anim를 play 할 것이다.(재생할 것이다.)
+            }
+            this.m_player.m_moving = true;
         } else {
             // 방향키를 떼면 애니메이션 정지
             if (this.m_player.m_moving) {
